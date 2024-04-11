@@ -2,12 +2,12 @@
   
 import { ref, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter, useI18n } from 'vue-router'
+import sys from 'sys'; // 导入 sys 模块
   
 import {useLocalStorage} from "@vueuse/core";
 import {workersImageReq} from "~/utils/api";
   
-const sys = require('sys')
-sys.meta_path = sys.meta_path.filter(hook => !(hook instanceof _GenerativeAIImportHook))
+sys.meta_path = sys.meta_path.filter(hook => !(hook instanceof _GenerativeAIImportHook));
   
 const route = useRoute()
 const router = useRouter()
