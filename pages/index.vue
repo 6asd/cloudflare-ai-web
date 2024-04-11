@@ -1,12 +1,14 @@
 <script setup lang="ts">
   
-import sys
-# 在导入之前移除hook
-sys.meta_path = [hook for hook in sys.meta_path if not isinstance(hook, _GenerativeAIImportHook)]
+import { ref, onMounted, nextTick } from 'vue'
+import { useRoute, useRouter, useI18n } from 'vue-router'
   
 import {useLocalStorage} from "@vueuse/core";
 import {workersImageReq} from "~/utils/api";
-
+  
+const sys = require('sys')
+sys.meta_path = sys.meta_path.filter(hook => !(hook instanceof _GenerativeAIImportHook))
+  
 const route = useRoute()
 const router = useRouter()
 const {t} = useI18n()
