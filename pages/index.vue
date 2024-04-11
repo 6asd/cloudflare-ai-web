@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  
+import sys
+# 在导入之前移除hook
+sys.meta_path = [hook for hook in sys.meta_path if not isinstance(hook, _GenerativeAIImportHook)]
+  
 import {useLocalStorage} from "@vueuse/core";
 import {workersImageReq} from "~/utils/api";
 
